@@ -179,7 +179,7 @@ struct ContentView: View {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 12))
                         Text("back")
-                            .font(.system(size: 14, design: .monospaced))
+                            .font(.system(size: 14, design: .rounded))
                     }
                     .foregroundColor(textColor)
                 }
@@ -192,7 +192,7 @@ struct ContentView: View {
                         .font(.system(size: 14))
                         .foregroundColor(Color.orange)
                     Text("\(privatePeerNick)")
-                        .font(.system(size: 16, weight: .medium, design: .monospaced))
+                        .font(.system(size: 16, weight: .medium, design: .rounded))
                         .foregroundColor(Color.orange)
                 }
                 .frame(maxWidth: .infinity)
@@ -217,7 +217,7 @@ struct ContentView: View {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 12))
                         Text("back")
-                            .font(.system(size: 14, design: .monospaced))
+                            .font(.system(size: 14, design: .rounded))
                     }
                     .foregroundColor(textColor)
                 }
@@ -238,7 +238,7 @@ struct ContentView: View {
                                 .foregroundColor(Color.orange)
                         }
                         Text("channel: \(currentChannel)")
-                            .font(.system(size: 16, weight: .medium, design: .monospaced))
+                            .font(.system(size: 16, weight: .medium, design: .rounded))
                             .foregroundColor(viewModel.passwordProtectedChannels.contains(currentChannel) ? Color.orange : Color.blue)
                     }
                 }
@@ -293,7 +293,7 @@ struct ContentView: View {
                         showLeaveChannelAlert = true
                     }) {
                         Text("leave")
-                            .font(.system(size: 12, design: .monospaced))
+                            .font(.system(size: 12, design: .rounded))
                             .foregroundColor(Color.red)
                     }
                     .buttonStyle(.plain)
@@ -310,7 +310,7 @@ struct ContentView: View {
                 // Public chat header
                 HStack(spacing: 4) {
                     Text("bitchat*")
-                        .font(.system(size: 18, weight: .medium, design: .monospaced))
+                        .font(.system(size: 18, weight: .medium, design: .rounded))
                         .foregroundColor(textColor)
                         .onTapGesture(count: 3) {
                             // PANIC: Triple-tap to clear all data
@@ -323,12 +323,12 @@ struct ContentView: View {
                     
                     HStack(spacing: 0) {
                         Text("@")
-                            .font(.system(size: 14, design: .monospaced))
+                            .font(.system(size: 14, design: .rounded))
                             .foregroundColor(secondaryTextColor)
                         
                         TextField("nickname", text: $viewModel.nickname)
                             .textFieldStyle(.plain)
-                            .font(.system(size: 14, design: .monospaced))
+                            .font(.system(size: 14, design: .rounded))
                             .frame(maxWidth: 100)
                             .foregroundColor(textColor)
                             .onChange(of: viewModel.nickname) { _ in
@@ -367,16 +367,16 @@ struct ContentView: View {
                         Image(systemName: "person.2.fill")
                             .font(.system(size: 11))
                         Text("\(otherPeersCount)")
-                            .font(.system(size: 12, design: .monospaced))
+                            .font(.system(size: 12, design: .rounded))
                         
                         // Channels icon with count (only if there are channels)
                         if channelCount > 0 {
                             Text("·")
-                                .font(.system(size: 12, design: .monospaced))
+                                .font(.system(size: 12, design: .rounded))
                             Image(systemName: "square.split.2x2")
                                 .font(.system(size: 11))
                             Text("\(channelCount)")
-                                .font(.system(size: 12, design: .monospaced))
+                                .font(.system(size: 12, design: .rounded))
                         }
                     }
                     .foregroundColor(viewModel.isConnected ? textColor : Color.red)
@@ -522,7 +522,7 @@ struct ContentView: View {
                         }) {
                             HStack {
                                 Text("@\(suggestion)")
-                                    .font(.system(size: 11, design: .monospaced))
+                                    .font(.system(size: 11, design: .rounded))
                                     .foregroundColor(textColor)
                                     .fontWeight(.medium)
                                 Spacer()
@@ -583,14 +583,14 @@ struct ContentView: View {
                                 HStack {
                                     // Show all aliases together
                                     Text(info.commands.joined(separator: ", "))
-                                        .font(.system(size: 11, design: .monospaced))
+                                        .font(.system(size: 11, design: .rounded))
                                         .foregroundColor(textColor)
                                         .fontWeight(.medium)
                                     
                                     // Show syntax if any
                                     if let syntax = info.syntax {
                                         Text(syntax)
-                                            .font(.system(size: 10, design: .monospaced))
+                                            .font(.system(size: 10, design: .rounded))
                                             .foregroundColor(secondaryTextColor.opacity(0.8))
                                     }
                                     
@@ -598,7 +598,7 @@ struct ContentView: View {
                                     
                                     // Show description
                                     Text(info.description)
-                                        .font(.system(size: 10, design: .monospaced))
+                                        .font(.system(size: 10, design: .rounded))
                                         .foregroundColor(secondaryTextColor)
                                 }
                                 .padding(.horizontal, 12)
@@ -621,21 +621,21 @@ struct ContentView: View {
             HStack(alignment: .center, spacing: 4) {
             if viewModel.selectedPrivateChatPeer != nil {
                 Text("<@\(viewModel.nickname)> →")
-                    .font(.system(size: 12, weight: .medium, design: .monospaced))
+                    .font(.system(size: 12, weight: .medium, design: .rounded))
                     .foregroundColor(Color.orange)
                     .lineLimit(1)
                     .fixedSize()
                     .padding(.leading, 12)
             } else if let currentChannel = viewModel.currentChannel, viewModel.passwordProtectedChannels.contains(currentChannel) {
                 Text("<@\(viewModel.nickname)> →")
-                    .font(.system(size: 12, weight: .medium, design: .monospaced))
+                    .font(.system(size: 12, weight: .medium, design: .rounded))
                     .foregroundColor(Color.orange)
                     .lineLimit(1)
                     .fixedSize()
                     .padding(.leading, 12)
             } else {
                 Text("<@\(viewModel.nickname)>")
-                    .font(.system(size: 12, weight: .medium, design: .monospaced))
+                    .font(.system(size: 12, weight: .medium, design: .rounded))
                     .foregroundColor(textColor)
                     .lineLimit(1)
                     .fixedSize()
@@ -644,7 +644,7 @@ struct ContentView: View {
             
             TextField("", text: $messageText)
                 .textFieldStyle(.plain)
-                .font(.system(size: 14, design: .monospaced))
+                .font(.system(size: 14, design: .rounded))
                 .foregroundColor(textColor)
                 .autocorrectionDisabled()
                 .focused($isTextFieldFocused)
@@ -741,7 +741,7 @@ struct ContentView: View {
                     Image(systemName: "square.split.2x2")
                         .font(.system(size: 10))
                     Text("CHANNELS")
-                        .font(.system(size: 11, weight: .bold, design: .monospaced))
+                        .font(.system(size: 11, weight: .bold, design: .rounded))
                 }
                 .foregroundColor(secondaryTextColor)
                 .padding(.horizontal, 12)
@@ -778,7 +778,7 @@ struct ContentView: View {
                 }
                 
                 Text(channel)
-                    .font(.system(size: 14, design: .monospaced))
+                    .font(.system(size: 14, design: .rounded))
                     .foregroundColor(viewModel.currentChannel == channel ? Color.blue : textColor)
                 
                 Spacer()
@@ -786,7 +786,7 @@ struct ContentView: View {
                 // Unread count
                 if let unreadCount = viewModel.unreadChannelMessages[channel], unreadCount > 0 {
                     Text("\(unreadCount)")
-                        .font(.system(size: 10, weight: .bold, design: .monospaced))
+                        .font(.system(size: 10, weight: .bold, design: .rounded))
                         .foregroundColor(backgroundColor)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
@@ -842,7 +842,7 @@ struct ContentView: View {
                 showLeaveChannelAlert = true
             }) {
                 Text("leave channel")
-                    .font(.system(size: 10, design: .monospaced))
+                    .font(.system(size: 10, design: .rounded))
                     .foregroundColor(secondaryTextColor)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 2)
@@ -874,7 +874,7 @@ struct ContentView: View {
                 // Header - match main toolbar height
                 HStack {
                     Text("YOUR NETWORK")
-                        .font(.system(size: 16, weight: .bold, design: .monospaced))
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
                         .foregroundColor(textColor)
                     Spacer()
                 }
@@ -900,7 +900,7 @@ struct ContentView: View {
                         // Show appropriate header based on context
                         if let currentChannel = viewModel.currentChannel {
                             Text("IN \(currentChannel.uppercased())")
-                                .font(.system(size: 11, weight: .semibold, design: .monospaced))
+                                .font(.system(size: 11, weight: .semibold, design: .rounded))
                                 .foregroundColor(secondaryTextColor)
                                 .padding(.horizontal, 12)
                         } else if !viewModel.connectedPeers.isEmpty {
@@ -908,7 +908,7 @@ struct ContentView: View {
                                 Image(systemName: "person.2.fill")
                                     .font(.system(size: 10))
                                 Text("PEOPLE")
-                                    .font(.system(size: 11, weight: .bold, design: .monospaced))
+                                    .font(.system(size: 11, weight: .bold, design: .rounded))
                             }
                             .foregroundColor(secondaryTextColor)
                             .padding(.horizontal, 12)
@@ -916,14 +916,14 @@ struct ContentView: View {
                         
                         if viewModel.connectedPeers.isEmpty {
                             Text("No one connected")
-                                .font(.system(size: 14, design: .monospaced))
+                                .font(.system(size: 14, design: .rounded))
                                 .foregroundColor(secondaryTextColor)
                                 .padding(.horizontal)
                         } else if let currentChannel = viewModel.currentChannel,
                                   let channelMemberIDs = viewModel.channelMembers[currentChannel],
                                   channelMemberIDs.isEmpty {
                             Text("No one in this channel yet")
-                                .font(.system(size: 14, design: .monospaced))
+                                .font(.system(size: 14, design: .rounded))
                                 .foregroundColor(secondaryTextColor)
                                 .padding(.horizontal)
                         } else {
@@ -1004,7 +1004,7 @@ struct ContentView: View {
                                 if isMe {
                                     HStack {
                                         Text(displayName + " (you)")
-                                            .font(.system(size: 14, design: .monospaced))
+                                            .font(.system(size: 14, design: .rounded))
                                             .foregroundColor(textColor)
                                         
                                         Spacer()
@@ -1021,7 +1021,7 @@ struct ContentView: View {
                                     }) {
                                         HStack {
                                             Text(displayName)
-                                                .font(.system(size: 14, design: .monospaced))
+                                                .font(.system(size: 14, design: .rounded))
                                                 .foregroundColor(peerNicknames[peerID] != nil ? textColor : secondaryTextColor)
                                             
                                             Spacer()
@@ -1083,16 +1083,16 @@ struct MessageContentView: View {
             if segment.type == "hashtag" {
                 // Note: We can't have clickable links in concatenated Text, so hashtags won't be clickable
                 result = result + Text(segment.text)
-                    .font(.system(size: 14, weight: .semibold, design: .monospaced))
+                    .font(.system(size: 14, weight: .semibold, design: .rounded))
                     .foregroundColor(Color.blue)
                     .underline()
             } else if segment.type == "mention" {
                 result = result + Text(segment.text)
-                    .font(.system(size: 14, weight: .semibold, design: .monospaced))
+                    .font(.system(size: 14, weight: .semibold, design: .rounded))
                     .foregroundColor(Color.orange)
             } else {
                 result = result + Text(segment.text)
-                    .font(.system(size: 14, design: .monospaced))
+                    .font(.system(size: 14, design: .rounded))
                     .fontWeight(isMentioned ? .bold : .regular)
             }
         }
@@ -1211,7 +1211,7 @@ struct DeliveryStatusView: View {
                 Image(systemName: "checkmark")
                     .font(.system(size: 10))
                 Text("\(reached)/\(total)")
-                    .font(.system(size: 10, design: .monospaced))
+                    .font(.system(size: 10, design: .rounded))
             }
             .foregroundColor(secondaryTextColor.opacity(0.6))
             .help("Delivered to \(reached) of \(total) members")
